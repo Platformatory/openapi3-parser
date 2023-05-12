@@ -2,7 +2,7 @@ import logging
 from typing import Dict
 
 from . import ExternalDocBuilder, ParameterBuilder, RequestBuilder, ResponseBuilder
-from .common import extract_typed_props, PropertyMeta
+from .common import extract_typed_props, extract_extension_attributes, PropertyMeta
 from ..enumeration import OperationMethod
 from ..specification import Operation, Response
 
@@ -45,6 +45,7 @@ class OperationBuilder:
 
         attrs['method'] = method
 
+        attrs['extensions'] = extract_extension_attributes(data)
         return Operation(**attrs)
 
     def _get_response_list(self, data: Dict[int, dict]) -> list[Response]:

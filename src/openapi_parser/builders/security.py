@@ -1,6 +1,6 @@
 import logging
 
-from .common import extract_typed_props, PropertyMeta
+from .common import extract_typed_props, extract_extension_attributes, PropertyMeta
 from .oauth_flow import OAuthFlowBuilder
 from ..enumeration import AuthenticationScheme, BaseLocation, SecurityType
 from ..specification import Security
@@ -30,6 +30,7 @@ class SecurityBuilder:
 
         attrs = extract_typed_props(data, attrs_map)
 
+        attrs['extensions'] = extract_extension_attributes(data)
         return Security(**attrs)
 
     def build_collection(self, data: dict) -> dict:

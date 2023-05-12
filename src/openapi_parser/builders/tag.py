@@ -1,6 +1,6 @@
 import logging
 
-from .common import extract_typed_props, PropertyMeta
+from .common import extract_typed_props, extract_extension_attributes, PropertyMeta
 from ..builders.external_doc import ExternalDocBuilder
 from ..specification import Tag
 
@@ -27,4 +27,5 @@ class TagBuilder:
 
         attrs = extract_typed_props(data, attrs_map)
 
+        attrs['extensions'] = extract_extension_attributes(data)
         return Tag(**attrs)

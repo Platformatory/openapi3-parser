@@ -2,7 +2,7 @@ import logging
 from typing import Union
 
 from . import ContentBuilder, HeaderBuilder
-from .common import extract_typed_props, PropertyMeta
+from .common import extract_typed_props, extract_extension_attributes, PropertyMeta
 from ..specification import Response
 
 logger = logging.getLogger(__name__)
@@ -34,4 +34,5 @@ class ResponseBuilder:
         except ValueError:
             logger.debug(f"Response code is not an integer [code={code}]")
 
+        attrs['extensions'] = extract_extension_attributes(data)
         return Response(**attrs)

@@ -31,7 +31,7 @@ class Info:
     terms_of_service: Optional[str] = None
     contact: Optional[Contact] = None
     license: Optional[License] = None
-
+    extensions: Optional[dict] = field(default_factory=dict)
 
 @dataclass
 class Server:
@@ -152,7 +152,7 @@ class Parameter:
     deprecated: Optional[bool] = field(default=False)
     style: Optional[str] = None
     explode: Optional[bool] = field(default=False)
-
+    extensions: Optional[dict] = field(default_factory=dict)
 
 @dataclass
 class Content:
@@ -187,7 +187,7 @@ class Response:
     content: Optional[list[Content]] = None
     headers: list[Header] = field(default_factory=list)
     # links: dict[str, Link]  # TODO
-
+    extensions: Optional[dict] = field(default_factory=dict)
 
 @dataclass
 class OAuthFlow:
@@ -207,7 +207,7 @@ class Security:
     bearer_format: Optional[str] = None
     flows: dict[OAuthFlowType, OAuthFlow] = field(default_factory=dict)
     url: Optional[str] = None
-
+    extensions: Optional[dict] = field(default_factory=dict)
 
 @dataclass
 class Operation:
@@ -223,6 +223,7 @@ class Operation:
     tags: list[str] = field(default_factory=list)
     security: list[dict[str, Any]] = field(default_factory=list)
     # callbacks: dict[str, Callback] = field(default_factory=dict)  # TODO
+    extensions: Optional[dict] = field(default_factory=dict)
 
 
 @dataclass
@@ -232,14 +233,14 @@ class Path:
     description: Optional[str] = None
     operations: list[Operation] = field(default_factory=list)
     parameters: list[Parameter] = field(default_factory=list)
-
+    extensions: Optional[dict] = field(default_factory=dict)
 
 @dataclass
 class Tag:
     name: str
     description: Optional[str] = None
     external_docs: Optional[ExternalDoc] = None
-
+    extensions: Optional[dict] = field(default_factory=dict)
 
 @dataclass
 class Specification:

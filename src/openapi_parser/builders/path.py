@@ -2,7 +2,7 @@ import logging
 from typing import Dict
 
 from . import OperationBuilder, ParameterBuilder
-from .common import extract_typed_props, PropertyMeta
+from .common import extract_typed_props, extract_extension_attributes, PropertyMeta
 from ..enumeration import OperationMethod
 from ..specification import Path
 
@@ -42,4 +42,5 @@ class PathBuilder:
             if method.value in data
         ]
 
+        attrs['extensions'] = extract_extension_attributes(data)
         return Path(**attrs)

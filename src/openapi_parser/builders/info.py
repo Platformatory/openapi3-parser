@@ -1,6 +1,6 @@
 import logging
 
-from .common import extract_typed_props, PropertyMeta
+from .common import extract_typed_props, extract_extension_attributes, PropertyMeta
 from ..specification import Contact, Info, License
 
 logger = logging.getLogger(__name__)
@@ -20,6 +20,7 @@ class InfoBuilder:
         }
 
         attrs = extract_typed_props(data, attrs_map)
+        attrs['extensions'] = extract_extension_attributes(data)
 
         return Info(**attrs)
 
