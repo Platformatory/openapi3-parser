@@ -4,23 +4,30 @@ from os.path import dirname, join
 
 from setuptools import find_packages, setup
 
-from src import openapi_parser
+#from src import openapi_parser
 
 description_file = join(dirname(__file__), "readme.md")
 
+
+__version__ = '1.1.8'
+__title__ = 'openapi3-parser'
+__author__ = 'Artem Manchenkov'
+__email__ = 'artem@manchenkoff.me'
+__description__ = 'OpenAPI v3 parser'
+
 setup(
-    name=openapi_parser.__title__,
-    author=openapi_parser.__author__,
-    author_email=openapi_parser.__email__,
+    name=__title__,
+    author=__author__,
+    author_email=__email__,
     url="https://github.com/manchenkoff/openapi3-parser",
     project_urls={
         "Source": "https://github.com/manchenkoff/openapi3-parser",
     },
-    version=openapi_parser.__version__,
+    version=__version__,
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
     license="MIT",
-    description=openapi_parser.__description__,
+    description=__description__,
     long_description=open(description_file).read(),
     long_description_content_type="text/markdown",
     keywords="swagger, python, swagger-parser, openapi3-parser, parser, openapi3, swagger-api",
